@@ -17,6 +17,11 @@ public class Article {
     @Column(length = 5000)
     private String body;
 
+    public Article(String title, String body) {
+        this.title = title;
+        this.body = body;
+    }
+
     public Long getId() {
         return Id;
     }
