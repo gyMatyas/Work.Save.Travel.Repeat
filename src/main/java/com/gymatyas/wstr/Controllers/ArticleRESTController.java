@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class ArticleRESTController {
 
@@ -23,6 +25,11 @@ public class ArticleRESTController {
     @PutMapping(value = "/articles")
     public Article createArticle(@RequestBody Article article) {
         return articleService.save(article);
+    }
+
+    @GetMapping(value = "/articles")
+    public List<Article> getAllArticles() {
+        return articleService.getAll();
     }
 
 }
