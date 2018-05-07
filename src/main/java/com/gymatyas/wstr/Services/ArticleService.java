@@ -21,4 +21,25 @@ public class ArticleService {
         return repository.save(toSave);
     }
 
+    public void delete(long toDelete) {
+        repository.deleteById(toDelete);
+    }
+
+    public Article getArticle(long id) {
+        return repository.getOne(id);
+    }
+
+    public boolean isArticleExists(long id) {
+        return repository.existsById(id);
+    }
+
+    public Article updateArticle(Long id, Article updated) {
+        if (isArticleExists(id)) {
+            Article toUpdate = getArticle(id);
+            toUpdate.setBody(updated.getBody());
+            toUpdate.setTitle(updated.getTitle());
+            return save(toUpdate);
+        }
+        return null;
+    }
 }
